@@ -1,0 +1,8 @@
+{
+  "entrypoint": "com.gufli.bricknametags.app.BrickNametags",
+  "name": "BrickNametags",
+  "version": "1.0.0",
+  "dependencies": [
+    "BrickPlaceholders"
+  ]
+}
