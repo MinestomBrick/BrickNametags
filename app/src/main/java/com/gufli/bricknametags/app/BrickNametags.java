@@ -4,8 +4,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.gufli.bricknametags.api.NametagAPI;
+import com.gufli.brickutils.scheduling.SchedulerAPI;
+import com.gufli.brickutils.scheduling.SimpleScheduler;
 import net.kyori.adventure.text.Component;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.event.player.PlayerDisconnectEvent;
 import net.minestom.server.event.player.PlayerLoginEvent;
 import net.minestom.server.extensions.Extension;
 
@@ -31,6 +34,8 @@ public class BrickNametags extends Extension {
             return;
         }
 
+        SchedulerAPI.setScheduler(new SimpleScheduler("BrickNametags"));
+
         BrickNametagManager nametagManager = new BrickNametagManager();
         NametagAPI.setNametagManager(nametagManager);
 
@@ -47,6 +52,10 @@ public class BrickNametags extends Extension {
                 if ( suffix != null ) {
                     nametagManager.setNametagSuffix(event.getPlayer(), Component.text(suffix.getAsString()));
                 }
+            });
+
+            MinecraftServer.getGlobalEventHandler().addListener(PlayerDisconnectEvent.class, (event) -> {
+                nametagManager.clear(event.getPlayer());
             });
         }
 

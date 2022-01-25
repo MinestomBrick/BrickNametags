@@ -2,6 +2,7 @@ package com.gufli.bricknametags.app;
 
 import com.gufli.bricknametags.api.NametagManager;
 import com.gufli.brickplaceholders.api.PlaceholderAPI;
+import com.gufli.brickutils.scheduling.SchedulerAPI;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
@@ -9,13 +10,11 @@ import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
 import net.minestom.server.scoreboard.Team;
-import net.minestom.server.timer.ExecutionType;
 import org.jetbrains.annotations.NotNull;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 public class BrickNametagManager implements NametagManager {
 
@@ -27,11 +26,8 @@ public class BrickNametagManager implements NametagManager {
     private final Map<Player, BrickNametag> nametags = new ConcurrentHashMap<>();
 
     BrickNametagManager() {
-        MinecraftServer.getSchedulerManager()
-                .buildTask(() -> nametags.keySet().forEach(this::refresh))
-                .executionType(ExecutionType.ASYNC)
-                .repeat(Duration.of(100, ChronoUnit.MILLIS))
-                .schedule();
+        SchedulerAPI.get().asyncRepeating(() -> nametags.keySet().forEach(this::refresh),
+                100, TimeUnit.MILLISECONDS);
     }
 
     // API
