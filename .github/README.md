@@ -41,7 +41,9 @@ dependencies {
 
 Check the [javadocs](https://minestombrick.github.io/BrickNametags/)
 
+#### Examples
+
 ```java
-NametagAPI.setNametag(player, Component.text("hey"), Component.text("oi"));
-NametagAPI.clear(player);
+NametagAPI.get().setNametag(player, Component.text("hey"), Component.text("oi"));
+NametagAPI.get().clear(player);
 ```
