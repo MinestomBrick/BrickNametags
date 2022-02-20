@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.minestombrick.nametags.api","l":"NametagAPI"},{"p":"org.minestombrick.nametags.api","l":"NametagManager"}];updateSearchResults();
