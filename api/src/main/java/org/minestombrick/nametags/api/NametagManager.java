@@ -1,4 +1,4 @@
-package com.gufli.bricknametags.api;
+package org.minestombrick.nametags.api;
 
 import net.kyori.adventure.text.Component;
 import net.minestom.server.entity.Player;

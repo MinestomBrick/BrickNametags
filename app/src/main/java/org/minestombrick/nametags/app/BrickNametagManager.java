@@ -1,8 +1,6 @@
-package com.gufli.bricknametags.app;
+package org.minestombrick.nametags.app;
 
-import com.gufli.bricknametags.api.NametagManager;
-import com.gufli.brickplaceholders.api.PlaceholderAPI;
-import com.gufli.brickutils.scheduling.SchedulerAPI;
+import org.minestombrick.nametags.api.NametagManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
@@ -11,6 +9,8 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
 import net.minestom.server.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
+import org.minestombrick.placeholders.api.PlaceholderAPI;
+import org.minestombrick.scheduler.api.SchedulerAPI;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -75,12 +75,12 @@ public class BrickNametagManager implements NametagManager {
 
         Component prefix = nametag.prefix();
         if (MinecraftServer.getExtensionManager().hasExtension("brickplaceholders")) {
-            prefix = PlaceholderAPI.replace(player, prefix);
+            prefix = PlaceholderAPI.get().replace(player, prefix);
         }
 
         Component suffix = nametag.suffix();
         if (MinecraftServer.getExtensionManager().hasExtension("brickplaceholders")) {
-            suffix = PlaceholderAPI.replace(player, suffix);
+            suffix = PlaceholderAPI.get().replace(player, suffix);
         }
 
         String strPrefix = PLAIN_TEXT.serialize(prefix);

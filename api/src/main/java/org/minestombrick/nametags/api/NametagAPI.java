@@ -1,4 +1,4 @@
-package com.gufli.bricknametags.api;
+package org.minestombrick.nametags.api;
 
 import org.jetbrains.annotations.ApiStatus;
 

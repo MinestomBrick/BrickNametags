@@ -1,4 +1,4 @@
-package com.gufli.bricknametags.app;
+package org.minestombrick.nametags.app;
 
 import net.kyori.adventure.text.Component;
 
