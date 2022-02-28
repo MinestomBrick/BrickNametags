@@ -4,13 +4,12 @@ A nametag/tablist extension for [Minestom](https://github.com/Minestom/Minestom)
 
 ## Install
 
-Get the [release](./releases) 
+Get the [release](https://github.com/MinestomBrick/BrickNametags/releases)
 and place it in the extension folder of your minestom server.
 
 ### Dependencies
 * [BrickPlaceholders](https://github.com/MinestomBrick/BrickPlaceholders)
 * [BrickScheduler](https://github.com/MinestomBrick/BrickScheduler)
-
 
 ## Config
 
